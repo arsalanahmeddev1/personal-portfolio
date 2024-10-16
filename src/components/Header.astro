@@ -1,0 +1,36 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+}
+// import logo from ''
+const { href, title, body } = Astro.props;
+const navItems = [
+  {name: 'Home', href: '/'},
+  {name: 'About Me', href: '#'},
+  {name: 'Portfolio', href: '#'},
+  {name: 'Contact', href: '#'},
+]
+---
+<header class="header py-[10px]">
+  <div class="container">
+    <div class="flex justify-between items-center">
+      <div class="logo">
+        <!-- <img src={logo} alt=""> -->
+         <h2 class="text-[50px] text-white">logo</h2>
+      </div>
+      <ul class="primary-nav flex justify-between w-full max-w-[400px]">
+        {navItems.map(item => (
+          <li><a href={item.href} class="text-white">{item.name}</a></li>
+        ))}
+      </ul>
+      <a href="" class="bg-theme-gradiant text-white py-[15px] px-[50px] rounded-[60px]">Contact Me</a>
+    </div>
+  </div>
+</header>
+<style>
+  header {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+</style>

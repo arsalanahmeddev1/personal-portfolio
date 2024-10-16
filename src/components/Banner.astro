@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+}
+import { Image } from "astro:assets";
+import profileImage from "../images/profile_img.svg";
+import {bannerHeadingSpan, bannerHeading, bannerPara, bannerleftBtn, bannerrightBtn } from '../content/bannerContent.js';
+const { href, title, body } = Astro.props;
+---
+
+<section class="banner">
+  <div class="container">
+    <div class="flex flex-col justify-center mx-auto">
+      <Image
+        src={profileImage}
+        alt=""
+        class="flex justify-center mx-auto mt-[30px]"
+        width="240"
+        height="240"
+      />
+      <!-- <h1
+        class="text-[60px] text-center mx-auto font-semibold text-white max-w-[1200px]"
+      >
+        <span class="bg-theme-gradiant bg-clip-text text-transparent"
+          >I'm Alex Bennett,</span
+        > frontend developer based in USA.
+      </h1> -->
+      <h1
+        class="text-[60px] text-center mx-auto font-semibold text-white max-w-[1200px]"
+      ><span class="bg-theme-gradiant bg-clip-text text-transparent">{bannerHeading}</span>
+        {bannerHeadingSpan}
+      </h1>
+      <p class="text-white text-center mb-[30px]">
+        {bannerPara}
+      </p>
+      <div class="flex gap-[20px] mx-auto">
+        <a
+          href=""
+          class="bg-theme-gradiant text-white py-[15px] px-[50px] rounded-[60px]"
+          >{bannerleftBtn}</a
+        >
+        <a
+          href=""
+          class="border-white border text-white py-[15px] px-[50px] rounded-[60px]"
+          >{bannerrightBtn}</a
+        >
+      </div>
+    </div>
+  </div>
+</section>

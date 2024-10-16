@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+}
+import { Image } from "astro:assets";
+import aboutImage from "../images/about-image.avif";
+import { aboutTitle, aboutPara, aboutPara2 } from "../content/aboutContent";
+const { title } = Astro.props;
+---
+
+<section class="about pt-[150px] pb-[100px]">
+  <div class="container">
+    <h2 class="text-center text-[60px] text-white font-semibold mb-[30px]">
+      {aboutTitle}
+    </h2>
+    <div class="grid grid-cols-2 ">
+      <div class="">
+        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px]">
+          {aboutPara}
+        </p>
+      </div>
+      <div>
+        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px]">
+          {aboutPara2}
+        </p>
+      </div>
+      <div>
+        <div
+          class="h-[9px] relative max-w-xl rounded-full overflow-hidden bg-white"
+        >
+          <div class="w-[50%] h-full bg-green-500 absolute"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
