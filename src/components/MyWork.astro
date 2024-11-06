@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+}
+import { Image } from 'astro:assets';
+import { workTitle, myWork } from '../content/workContent';
+const { title } = Astro.props;
+---
+
+<section class="my-work pb-[100px]">
+  <div class="container">
+    <h2 class="text-center text-[60px] text-white font-semibold mb-[30px]">
+      {workTitle}
+    </h2>
+    <div class="grid grid-cols-3 gap-[20px]">
+      {
+        myWork.map((work) => (
+          <div class="work-card group relative overflow-hidden  border border-white border-4 p-[3px] rounded-[10px]" key={work.id}>
+            <Image src={work.img} alt={work.alt} class='rounded-[10px] group-hover:transform group-hover:scale-[1.1] transition-transform duration-500 ease-in-out'/>
+            <div class="absolute   mx-auto text-center inset-0 flex items-center justify-center">
+              <h5 class="text-white opacity-[100%] transition-opacity ease-in-out  group-hover:opacity-0 text-[40px] font-semibold duration-500 ">{work.name}</h5>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

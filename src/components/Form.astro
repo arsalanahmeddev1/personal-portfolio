@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+}
+import { contactFormTitle, formFields } from '../content/contactFormContent';
+const { title } = Astro.props;
+---
+    
+<section class="contact-form-sec  py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-center text-5xl text-white font-semibold mb-20">
+      {contactFormTitle}
+    </h2>
+    <div class="grid">
+      <form action="" method="POST">
+        <div class="grid grid-cols-2 gap-5">
+          {formFields.map((field, index) => {
+            if (field.type === 'textarea') {
+              return (
+                <textarea
+                  key={index}
+                  class={field.class}
+                  placeholder={field.placeholder}
+                  name="message"
+                  required
+                ></textarea>
+              );
+            } else if (field.type === 'submit') {
+              return (
+                <div key={index} class="col-span-2 flex justify-center">
+                  <button type="submit" class={field.class}>
+                    {field.text}
+                  </button>
+                </div>
+              );
+            } else {
+              return (
+                <input
+                  key={index}
+                  type={field.type}
+                  class={field.class}
+                  placeholder={field.placeholder}
+                  name={field.placeholder.toLowerCase().replace(/ /g, '_')}
+                  required
+                />
+              );
+            }
+          })}
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

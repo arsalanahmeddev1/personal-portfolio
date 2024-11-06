@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Banner from '../components/Banner.astro';
 import About from '../components/About.astro';
+import MyWork from '../components/MyWork.astro';
+import Form from '../components/Form.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -10,8 +12,13 @@ import About from '../components/About.astro';
        <Header />
        <Banner />
        <About />
+       <MyWork />
+       <Form />
 	</main>
 </Layout>
 
-<style>
+<style is:global>
+       #dev-toolbar-root {
+  display: none !important;
+}
 </style>

@@ -8,7 +8,10 @@ import {
   aboutTitle,
   aboutPara,
   aboutPara2,
-  skill,
+  skill1,
+  skill2,
+  skill3,
+  skill4,
 } from "../content/aboutContent";
 const { title } = Astro.props;
 ---
@@ -32,7 +35,7 @@ const { title } = Astro.props;
       <div>
         <div>
           <h4 class="text-white text-[20px] uppercase font-medium mb-[10px]">
-            {skill}
+            {skill1}
           </h4>
           <div
             class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[20px]"
@@ -42,7 +45,7 @@ const { title } = Astro.props;
         </div>
         <div>
           <h4 class="text-white text-[20px] uppercase font-medium mb-[10px]">
-            {skill}
+            {skill2}
           </h4>
           <div
             class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd]"
@@ -50,6 +53,30 @@ const { title } = Astro.props;
             <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
           </div>
         </div>
+        
+      </div>
+      <div>
+        <div>
+          <h4 class="text-white text-[20px] uppercase font-medium mb-[10px]">
+            {skill3}
+          </h4>
+          <div
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[20px]"
+          >
+            <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white text-[20px] uppercase font-medium mb-[10px]">
+            {skill4}
+          </h4>
+          <div
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd]"
+          >
+            <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
