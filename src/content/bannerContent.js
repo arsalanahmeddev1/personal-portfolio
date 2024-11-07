@@ -1,5 +1,5 @@
-export const bannerHeading = 'im Alex Bennett,'
-export const bannerHeadingSpan = 'frontend developer based in USA.'
-export const bannerPara = 'I am a frontend developer from California, USA with 10 years of experience in multiple companies like Microsoft, Tesla and Apple.';
+export const bannerHeading = 'Im Arsalan Ahmed,'
+export const bannerHeadingSpan = 'Frontend Developer Based In Pakistan.'
+export const bannerPara = 'I am a frontend developer from Pakistan with 3 years of experience in multiple companies.';
 export const bannerleftBtn = 'Contact Me';
-export const bannerrightBtn = 'My Resume` ';
+export const bannerrightBtn = 'My Resume ';
