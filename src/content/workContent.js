@@ -1,6 +1,6 @@
 export const workTitle = 'My Work';
 
-import workThumbnail1 from '../images/diginsy.jpeg';
+import workThumbnail1 from '../images/diginsy.png';
 import workThumbnail2 from '../images/work-thumnail-01.webp';
 import workThumbnail3 from '../images/work-thumnail-01.webp';
 import workThumbnail4 from '../images/work-thumnail-01.webp';
