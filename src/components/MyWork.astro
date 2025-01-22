@@ -15,12 +15,14 @@ const { title } = Astro.props;
     <div class="grid grid-cols-3 gap-[20px]">
       {
         myWork.map((work) => (
+          <a href={work.link} class="flex h-[325px]" target="_blank">
           <div class="work-card group relative overflow-hidden  border border-white border-4 p-[3px] rounded-[10px]" key={work.id}>
-            <Image src={work.img} alt={work.alt} class='rounded-[10px] group-hover:transform group-hover:scale-[1.1] transition-transform duration-500 ease-in-out'/>
-            <div class="absolute   mx-auto text-center inset-0 flex items-center justify-center">
+            <Image src={work.img} alt={work.alt} class=' h-full rounded-[10px] group-hover:transform group-hover:scale-[1.1] transition-transform duration-500 ease-in-out'/>
+            <div class="absolute bg-[#0000008a]   mx-auto text-center inset-0 flex items-center justify-center">
               <h5 class="text-white opacity-[100%] transition-opacity ease-in-out  group-hover:opacity-0 text-[40px] font-semibold duration-500 ">{work.name}</h5>
             </div>
           </div>
+        </a>
         ))
       }
     </div>
