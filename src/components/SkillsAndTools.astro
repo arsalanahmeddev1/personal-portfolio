@@ -6,15 +6,15 @@ import { Image } from 'astro:assets';
 import { skillsTitle, skillsCards } from '../content/skillsAndToolsContent';
 const { title } = Astro.props;
 ---
-<section class="skills-and-tools-sec pb-[100px]">
+<section class="skills-and-tools-sec pb-[50px] sm:pb-[100px]" id="skillandtools">
   <div class="container">
     <h2 class="text-center text-[60px] text-white font-semibold mb-[30px]">
       {skillsTitle}
     </h2>
-    <div class="grid grid-cols-12 gap-[20px]">
+    <div class="grid grid-cols-2 sm:grid-cols-12 gap-[20px]">
       {
         skillsCards.map((skillsCard, index) => (
-          <div key={index} class="col-span-3 justify-items-center">
+          <div key={index} class="col-span-1 sm:col-span-3 justify-items-center">
             <div class="bg-theme-gradiant rounded-[6px] w-full  max-w-[250px] p-[2px]">
               <div class="skills-card-wrapper rounded-[6px] py-[10px] px-[20px] bg-black">
                 <div class="flex items-center gap-[10px]">
@@ -23,7 +23,7 @@ const { title } = Astro.props;
                     alt={skillsCard.text}
                     class="w-full max-w-[48px]"
                   />
-                  <h5 class="text-[22px] text-white font-semibold italic">
+                  <h5 class="text-[15px] sm:text-[22px] text-white font-semibold italic">
                     {skillsCard.text}
                   </h5>
                 </div>

@@ -7,12 +7,12 @@ import { workTitle, myWork } from '../content/workContent';
 const { title } = Astro.props;
 ---
 
-<section class="my-work pb-[100px]">
+<section class="my-work pb-[50px] sm:pb-[100px]" id="mywork">
   <div class="container">
     <h2 class="text-center text-[60px] text-white font-semibold mb-[30px]">
       {workTitle}
     </h2>
-    <div class="grid grid-cols-3 gap-[20px]">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-[20px]">
       {
         myWork.map((work) => (
           <a href={work.link} class="flex h-[325px]" target="_blank">

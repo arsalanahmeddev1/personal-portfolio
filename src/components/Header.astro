@@ -7,26 +7,26 @@ interface Props {
 // import logo from ''
 const { href, title, body } = Astro.props;
 const navItems = [
-  {name: 'Home', href: '/'},
-  {name: 'About Me', href: '#'},
-  {name: 'Portfolio', href: '#'},
-  {name: 'Contact', href: '#'},
+  {name: 'Home', href: '#banner',},
+  {name: 'About Me', href: '#about'},
+  {name: 'Portfolio', href: '#mywork'},
+  {name: 'Contact', href: '#contactform'},
 ]
 
 ---
 <header class="header py-[10px]">
-  <div class="container">
+  <div class="container px-[20px]">
     <div class="flex justify-between items-center">
       <div class="logo relative">
-         <h2 class="text-[50px] text-white font-semibold">Arsalan</h2>
+         <h2 class="text-[30px] sm:text-[50px] text-white font-semibold ">Arsalan</h2>
          <div class="dot w-[10px] h-[10px] rounded-full bg-theme-gradiant absolute bottom-[17px] right-[-14px]"></div>
       </div>
-      <ul class="primary-nav flex justify-between w-full max-w-[400px]">
+      <ul class="primary-nav justify-between w-full max-w-[400px] hidden md:flex">
         {navItems.map(item => (
           <li><a href={item.href} class="text-white">{item.name}</a></li>
         ))}
       </ul>
-      <a href="#contactform" class="bg-theme-gradiant text-white py-[15px] px-[50px] rounded-[60px]">Contact Me</a>
+      <a href="#contactform" class="bg-theme-gradiant text-white py-[10px] px-[20px] sm:py-[15px] sm:px-[50px] rounded-[60px]">Contact Me</a>
     </div>
   </div>
 </header>

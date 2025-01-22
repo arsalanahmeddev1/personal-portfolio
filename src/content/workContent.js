@@ -12,5 +12,5 @@ export const myWork = [
   {id: 3, name: 'Diligenttek', type: 'web brand', alt: 'img-alt', year: 2024, img: workThumbnail3, link: 'https://www.diligenttek.com/' },
   {id: 4, name: 'Design Foxy', type: 'web brand', alt: 'img-alt', year: 2024, img: workThumbnail4, link: 'https://www.designfoxy.com/' },
   {id: 5, name: 'Design Sketchers', type: 'web brand', alt: 'img-alt', year: 2024, img: workThumbnail5, link: 'https://www.designsketchers.com/' },
-  {id: 6, name: 'name here', type: 'ecommerce', alt: 'img-alt', year: 2024, img: workThumbnail6 },
+  {id: 6, name: 'project', type: 'web brand', alt: 'img-alt', year: 2024, img: workThumbnail6 },
 ]

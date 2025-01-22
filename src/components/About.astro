@@ -16,19 +16,19 @@ import {
 const { title } = Astro.props;
 ---
 
-<section class="about pt-[100px] pb-[100px]">
+<section class="about pt-[20px] pb-[20px] sm:pt-[100px] sm:pb-[100px]" id="about">
   <div class="container">
     <h2 class="text-center text-[60px] text-white font-semibold mb-[30px]">
       {aboutTitle}
     </h2>
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2">
       <div class="">
-        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px]">
+        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px] text-center sm:text-left">
           {aboutPara}
         </p>
       </div>
       <div>
-        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px]">
+        <p class="text-white text-[16px] font-medium mb-[30px] max-w-[620px] text-center sm:text-left">
           {aboutPara2}
         </p>
       </div>
@@ -38,7 +38,7 @@ const { title } = Astro.props;
             {skill1}
           </h4>
           <div
-            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[20px]"
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[10px] sm:mb-[20px]"
           >
             <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
           </div>
@@ -48,7 +48,7 @@ const { title } = Astro.props;
             {skill2}
           </h4>
           <div
-            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd]"
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[10px] sm:mb-[0]"
           >
             <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
           </div>
@@ -61,7 +61,7 @@ const { title } = Astro.props;
             {skill3}
           </h4>
           <div
-            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[20px]"
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] mb-[10px] sm:mb-[20px]"
           >
             <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
           </div>
@@ -71,7 +71,7 @@ const { title } = Astro.props;
             {skill4}
           </h4>
           <div
-            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd]"
+            class="h-[6px] relative max-w-xl rounded-full overflow-hidden bg-[#ddd] "
           >
             <div class="w-[50%] h-full bg-theme-gradiant absolute"></div>
           </div>
