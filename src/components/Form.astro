@@ -12,7 +12,7 @@ const { title } = Astro.props;
       {contactFormTitle}
     </h2>
     <div class="grid">
-      <form action="" method="POST">
+      <form action="" method="POST" onsubmit="return handleSubmit(event)">
         <div class="grid grid-cols-2 gap-5">
           {formFields.map((field, index) => {
             if (field.type === 'textarea') {
@@ -36,6 +36,7 @@ const { title } = Astro.props;
             } else {
               return (
                 <input
+                  name = {field.name}
                   key={index}
                   type={field.type}
                   class={field.class}
@@ -51,3 +52,24 @@ const { title } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  async function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(event.target);
+
+    try {
+      const response = await fetch('send.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.text();
+      alert(result); // Show success or error message from PHP
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error submitting the form.');
+    }
+  }
+</script>
