@@ -1,39 +1,61 @@
 <?php
-//Import PHPMailer classes into the global namespace
+
+
+    //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+if(isset ($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    
+
+
 
 //Load Composer's autoloader
-require './Exception.php';
-require './PHPMailer.php';
-require './SMTP.php';
-
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullName = $_POST['name'];
-    $email = $_POST['email']; 
-    $message = $_POST['message'];
+try {
+    //Server settings
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'arsalanahmeddev1@gmail.com';                     //SMTP username
+    $mail->Password   = 'azcp vymf sdpn yknf
+';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    // Set up PHPMailer as before...
-    
-    try {
-        $mail->setFrom($email, $fullName); // Use email and name from the form
-        $mail->addAddress('arsalanahmeddev1@gmail.com'); // Change to your email
-        
-        $mail->Subject = 'New Contact Form Submission';
-        $mail->Body = "Name: $fullName\nEmail: $email\nMessage: $message";
+    //Recipients
+    $mail->setFrom('arsalanahmeddev1@gmail.com', 'Contact Form');
+    $mail->addAddress('arsalanahmeddev1@gmail.com', 'my web');     //Add a recipient
+    // $mail->addAddress('ellen@example.com');               //Name is optional
+    // $mail->addReplyTo('info@example.com', 'Information');
+    // $mail->addCC('cc@example.com');
+    // $mail->addBCC('bcc@example.com');
 
-        $mail->send();
-        echo 'Message has been sent';
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-} else {
-    echo "Invalid request method.";
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+  }
