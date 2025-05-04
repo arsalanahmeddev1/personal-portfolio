@@ -5,30 +5,122 @@ interface Props {
 import { contactFormTitle, formFields } from '../content/contactFormContent';
 const { title } = Astro.props;
 ---
-    
+
+<script is:inline>
+  // Form submission handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone') || 'Not provided';
+        const message = formData.get('message');
+
+        // Simple validation
+        if (!name || !email || !message) {
+          errorText.textContent = 'Please fill in all required fields.';
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+          return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorText.textContent = 'Please enter a valid email address.';
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+          return;
+        }
+
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        try {
+          // Create email body
+          const emailBody = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message: ${message}
+          `;
+
+          // Create mailto link
+          const mailtoLink = `mailto:arsalanwebdev@gmail.com?subject=Contact Form Submission from ${name}&body=${encodeURIComponent(emailBody)}`;
+
+          // Open email client
+          window.location.href = mailtoLink;
+
+          // Show success message
+          successMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
+
+          // Reset form
+          form.reset();
+
+          // Reset button
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+        } catch (error) {
+          console.log('FAILED...', error);
+
+          // Show error message
+          errorText.textContent = 'Failed to open email client. Please try again later.';
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+
+          // Reset button
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  });
+</script>
+
 <section class="contact-form-sec   sm:py-20" id="contactform">
   <div class="container mx-auto px-4">
     <h2 class="text-center text-5xl text-white font-semibold mb-5 sm:mb-20">
       {contactFormTitle}
     </h2>
+    <div id="successMessage" class="bg-green-600 text-white p-4 rounded-md mb-8 max-w-2xl mx-auto text-center" style="display: none;">
+      <p>Thank you for your message! I'll get back to you soon.</p>
+    </div>
+    <div id="errorMessage" class="bg-red-600 text-white p-4 rounded-md mb-8 max-w-2xl mx-auto text-center" style="display: none;">
+      <p id="errorText">Please fill in all required fields.</p>
+    </div>
     <div class="grid">
-      <form action="/form/send.php" method="POST">
+      <form id="contactForm">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {formFields.map((field, index) => {
+          {formFields.map((field) => {
             if (field.type === 'textarea') {
               return (
                 <textarea
-                  key={index}
                   class={field.class}
                   placeholder={field.placeholder}
-                  name="message"
+                  name={field.name}
                   required
                 ></textarea>
               );
             } else if (field.type === 'submit') {
               return (
-                <div key={index} class="col-span-1 sm:col-span-2 flex justify-center">
-                  <button type="submit" class={field.class}>
+                <div class="col-span-1 sm:col-span-2 flex justify-center">
+                  <button type="submit" name="submit" class={field.class}>
                     {field.text}
                   </button>
                 </div>
@@ -36,12 +128,10 @@ const { title } = Astro.props;
             } else {
               return (
                 <input
-                  name = {field.name}
-                  key={index}
                   type={field.type}
                   class={field.class}
                   placeholder={field.placeholder}
-                  name={field.placeholder.toLowerCase().replace(/ /g, '_')}
+                  name={field.name}
                   required
                 />
               );

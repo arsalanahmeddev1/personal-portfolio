@@ -26,12 +26,62 @@ const navItems = [
           <li><a href={item.href} class="text-white">{item.name}</a></li>
         ))}
       </ul>
-      <a href="#contactform" class="bg-theme-gradiant text-white py-[10px] px-[20px] sm:py-[15px] sm:px-[50px] rounded-[60px]">Contact Me</a>
+      
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-button" class="md:hidden text-white z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      
+      <a href="#contactform" class="bg-theme-gradiant text-white py-[10px] px-[20px] sm:py-[15px] sm:px-[50px] rounded-[60px] hidden md:block">Contact Me</a>
     </div>
   </div>
+  
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-90 z-10 hidden flex-col justify-center items-center">
+    <ul class="flex flex-col items-center gap-6">
+      {navItems.map(item => (
+        <li><a href={item.href} class="text-white text-xl mobile-menu-link">{item.name}</a></li>
+      ))}
+      <li class="mt-4">
+        <a href="#contactform" class="bg-theme-gradiant text-white py-[10px] px-[20px] rounded-[60px] mobile-menu-link">Contact Me</a>
+      </li>
+    </ul>
+  </div>
 </header>
+
+<script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    
+    // Toggle menu
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+      document.body.classList.toggle('overflow-hidden');
+    });
+    
+    // Close menu when clicking a link
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+      });
+    });
+  });
+</script>
+
 <style>
   header {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
   }
 </style>
