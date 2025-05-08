@@ -1,4 +1,3 @@
-export const workTitle = 'My Work';
 
 import workThumbnail7 from '../images/khryslis.png';
 import workThumbnail8 from '../images/on-car.png';
@@ -8,6 +7,7 @@ import workThumbnail3 from '../images/diligenttek.png';
 import workThumbnail4 from '../images/designfoxy.png';
 import workThumbnail5 from '../images/designsketchers.png';
 import workThumbnail6 from '../images/goves.png';
+export const workTitle = 'My Work';
 export const myWork = [
   {id: 1, name: 'Car Selling React', type: 'website', alt: 'img-alt', year: 2025, img: workThumbnail7, link: 'https://khrylis-social.vercel.app/' },
   {id: 1, name: 'Social Media React', type: 'social media', alt: 'img-alt', year: 2025, img: workThumbnail8, link: 'https://one-off-autos-beta.vercel.app/' },
