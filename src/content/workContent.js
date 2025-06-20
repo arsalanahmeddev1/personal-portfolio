@@ -1,6 +1,6 @@
 
 import workThumbnail7 from '../images/khryslis.png';
-import workThumbnail8 from '../images/on-car.png';
+import workThumbnail8 from '../images/one-car.png';
 import workThumbnail1 from '../images/diginsy-updated.png';
 import workThumbnail2 from '../images/finitive.png';
 import workThumbnail3 from '../images/diligenttek.png';
